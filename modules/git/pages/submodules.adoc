@@ -1,0 +1,62 @@
+= Submodules
+
+I am of the opinion (and from what I've seen, common opinion)
+that Git submodules feel like a hack bolted on.
+Unfortunately, they are not always avoidable.
+
+== Tracking branches
+
+Git submodules have the ability to track a branch by
+specifying `--branch` when running `git submodule add`,
+or using the `submodules.<name>.branch` key in `.gitmodules`.
+
+But saying that it's tracking the branch is a stretch, at best.
+First, by default Git won't checkout the commit that the branch points to,
+instead preferring the SHA1 ref stored in the repo.
+Wait, what? What SHA1 ref?
+
+When you "track" a submodule branch,
+all it does is add a little bit of extra info to the superproject.
+It doesn't really track the submodule branch,
+a static SHA1 commit is still being stored as the actual ref.
+
+To get the actual commit from the branch,
+you must pass `--remote` to `git submodule update`.
+
+=== Shallow clones with branches
+
+There is an even worse issue.
+It's very common to do shallow clones in Git, fetching only the latest history.
+You can do this with submodules to,
+by passing `--depth=1` to `git submodule update`.
+
+However, this implies `--single-branch`.
+Which is fine until you realize that
+`git-submodule` doesn't pass a branch to `git-clone`,
+even if you have a branch set in `.gitmodules`,
+so `git-clone` will always get the default branch.
+
+This means using a non-default branch will break if you use `--depth=1`.
+Apart from manually cloning the subrepos or patching `git-submodules`,
+I don't believe there to be a way around this.
+
+=== GitHub Actions
+
+Actions doesn't have great support for submodules either.
+In https://github.com/actions/checkout[`actions/checkout`],
+you can specify `submodules: recursive`,
+but there is no way to pass `--remote` if you're tracking a branch.
+
+In addition, it doesn't work with non-default branches either.
+The following tries to fix this.
+
+[,sh]
+----
+# fetch all branches
+git submodule foreach '
+  git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+'
+git submodule foreach 'git fetch origin'
+# get actual commit pointed to by branch
+git submodule update --force --recursive --remote
+----
