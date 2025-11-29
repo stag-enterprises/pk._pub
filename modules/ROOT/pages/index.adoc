@@ -1,0 +1,8 @@
+= Blog Home
+
+This is my blog.
+I try to not have documentation and put narratives here.
+You can subscribe to the Atom (like RSS) feed link:/blog/feed.xml[here].
+
+Also, check out my https://status.cafe/users/stag[status.cafe profile]!
+I microblog there.

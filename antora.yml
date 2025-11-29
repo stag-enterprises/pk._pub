@@ -1,0 +1,12 @@
+name: 'blog'
+title: 'Blog'
+version: null
+nav:
+  - 'modules/ROOT/nav.adoc'
+ext:
+  antora_atom:
+    feed_options:
+    component_feeds:
+      - title: "stag-enterprises's blog"
+        name: 'feed'
+        tags: [ '*:*' ]
