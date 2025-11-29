@@ -1,0 +1,11 @@
+name: 'updates'
+title: 'Updates'
+version: null
+nav:
+  - 'modules/ROOT/nav.adoc'
+ext:
+  antora_atom:
+    component_feeds:
+      - title: 'pk.stag.lol Updates'
+        name: 'feed'
+        tags: [ '*:*' ]

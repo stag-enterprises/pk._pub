@@ -1,0 +1,5 @@
+= Updates Home
+
+Get updates to the site here.
+New entries max once a week but I don't think I'll ever update that often.
+Take an Atom (like RSS) link:/updates/feed.xml[feed]!
