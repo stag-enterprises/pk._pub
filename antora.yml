@@ -4,3 +4,4 @@ version: null
 nav:
   - 'modules/ROOT/nav.adoc'
   - 'modules/git/nav.adoc'
+  - 'modules/lisp/nav.adoc'

@@ -1,0 +1,35 @@
+= Formatting
+
+Lisp is hard to format.
+https://aartaka.me/lisp-indent.html[] is a great read on this.
+
+There are two main ways to format someting.
+
+[,clojure]
+----
+(myfn arg1
+      arg2
+      arg3)
+
+(myfn
+  arg1
+  arg2
+  arg3)
+----
+
+Some people mix both, I prefer to always use two space indentation.
+Either way, a lot of the time it gives me mixed feelings on the result.
+
+== Readability
+
+One thing I've noticed is that Lisps (in general)
+are much harder to quickly scan through than other languages.
+
+The main reason being that a Lisp, being a Lisp, has a very regular syntax.
+This means that important language constructs, such as control flow,
+look exactly the same as things like function calls.
+
+While scanning code, this makes them harder to be distinguished.
+
+//<TODO> expand
+
