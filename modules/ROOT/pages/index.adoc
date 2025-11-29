@@ -1,8 +1,8 @@
-= Blog Home
+= Home
+:feedphobic:
 
-This is my blog.
-I try to not have documentation and put narratives here.
-You can subscribe to the Atom (like RSS) feed link:/blog/feed.xml[here].
-
-Also, check out my https://status.cafe/users/stag[status.cafe profile]!
-I microblog there.
+You're visiting *knowledge* on https://stag.lol.
+In the bottom left, there is the component selector,
+where my link:/blog[blog] can be found.
+You can subscribe to updates via the updates component.
+Both that and the blog have Atom feeds available.
