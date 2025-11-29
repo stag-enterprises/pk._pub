@@ -4,8 +4,7 @@ version: null
 nav:
   - 'modules/ROOT/nav.adoc'
 ext:
-  antora_atom:
-    feed_options:
+  atom:
     component_feeds:
       - title: "stag-enterprises's blog"
         name: 'feed'
