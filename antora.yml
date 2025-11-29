@@ -1,5 +1,5 @@
 name: 'ROOT'
-title: 'Root'
+title: 'Public'
 version: null
 nav:
   - 'modules/ROOT/nav.adoc'

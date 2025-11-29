@@ -1,3 +1,7 @@
-= My index page
+= Home
 
-hello world!
+You're visiting *knowledge* on https://stag.lol.
+In the bottom left, there is the component selector,
+where my link:/blog[blog] can be found.
+You can subscribe to updates via the updates component.
+Both that and the blog have Atom feeds available.
