@@ -1,0 +1,5 @@
+= 25W48
+
+* Added page xref:ROOT:lisp:formatting.adoc[]
+* Added page xref:ROOT:git:submodules.adoc[]
+
