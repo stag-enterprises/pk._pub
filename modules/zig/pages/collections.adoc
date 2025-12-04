@@ -41,7 +41,7 @@ const arr = [_]i32{ 1, 2, 4, 8, 16 };
 for (arr, 0..) |v, i| {
     std.debug.print("Index {d} has {d}\n", .{v, i});
 }
-----``
+----
 
 .Zero initialization
 [,zig]
@@ -96,3 +96,4 @@ See also (bulitin functions):
   for using a builtin reducer operation
 * https://ziglang.org/documentation/master/#splat[`@splat`]
   for creeating a list of repeated elements
+
