@@ -1,0 +1,98 @@
+= Collections
+
+== Arrays
+
+The length of an array must be known at comptime.
+If that's not possible, a <<pointers.adoc#slice, slice>> should be used.
+
+.Syntax
+Type::            `[len]Type`, or with a sentinel: `[len:sentinel]Type`
+Create an array:: `[_]Type{ a, b, c }`
+Length::          `arr.len`
+Index::           `arr[idx]`
+Destructure::     `const a, const b = [_]i32{ 1, 2 };`
+Comptime concat:: `arr1 ++ arr2`
+Comptime repeat:: `arr ** int`
+
+=== Cookbook
+
+.Standard for-loop
+[,zig]
+----
+const arr = [_]i32{ 1, 2, 4, 8, 16 };
+for (arr) |v| {
+    doThings(v);    
+}
+----
+
+.Mutable looping
+[,zig]
+----
+var arr = [_]i32{ 1, 2, 4, 8, 16 };
+for &arr |*v| {
+    v.* *= 2;
+}
+----
+
+.Indexed looping
+[,zig]
+----
+const arr = [_]i32{ 1, 2, 4, 8, 16 };
+for (arr, 0..) |v, i| {
+    std.debug.print("Index {d} has {d}\n", .{v, i});
+}
+----``
+
+.Zero initialization
+[,zig]
+----
+const zeros = [_]i32{0} ** 100;
+----
+
+=== Strings
+
+String literals are actually constant pointers to a null-terminated array.
+Since their lengths are always known
+they can be coerced to slices or a null-temrinated pointer.
+They can also be converted to the underlying array by dereferencing them.
+
+By convention, since Zig has no string type,
+functions taking a string use type `[]const u8`.
+
+== Vectors
+
+Vectors are like arrays,
+but they let you run operations in parallel on them using SIMD.
+
+They can hold the following:
+* Booleans
+* Integers
+* Floats
+* Pointers
+
+They support these operations:
+* Arithmetic (including complex arithmetic like `@sqrt`)
+* Bitwise
+* Comparison
+* Boolean not
+
+Using type coercion they can be converted to arrays and back.
+Using `slc.*` a slice can be converted to a vector
+if it's length is comptime known.
+
+.Syntax
+Type::            `@Vector(len, Type)`
+Create a vector:: `@Vector(len, Type){ a, b, c, d }`
+Index::           `vec[idx]`
+Destructure::     `const a, const b = vec;`
+
+See also (bulitin functions):
+
+* https://ziglang.org/documentation/master/#select[`@select`]
+  for picking elements from two vectors based on a predicate
+* https://ziglang.org/documentation/master/#shuffle[`@shuffle`]
+  for creating a new vector from two vectors based on a list of indexes
+* https://ziglang.org/documentation/master/#reduce[`@reduce`]
+  for using a builtin reducer operation
+* https://ziglang.org/documentation/master/#splat[`@splat`]
+  for creeating a list of repeated elements

@@ -1,0 +1,26 @@
+= Zig
+
+Zig is a low-level systems language with manual memory management.
+It's fun to write, though I'm not sure how it scales into larger projects.
+It's like writing C but without half of the headaches.
+
+.Things I don't like:
+
+* *No syntax-level macro system* +
+  There is no support for compile-time macros that can take arbitrary code,
+  unlike macros in Rust or Lisp.
+  Maybe this goes against the philosophy of Zig,
+  but it is a bit disappointing,
+  especially after seeing the powerful comptime features.
+
+* *No struct destructuring* +
+  Zig heavily relies on structs to make many features possible.
+  For example, Zig doesn't support named, optional, or out-of-order parameters,
+  instead relying on structs like objects in JavaScript.
+  Similarily, modules are also implemented using anonymous structs.
++
+So it is strange that Zig doesn't have struct destructuring, of any kind.
+It's not like Zig doesn't have/want/support destructuring,
+you can destructure tuples, arrays, and vectors, but not structs.
+Without struct destructuring this makes a lot of things rather painful,
+since you have to repeat the indentifier a billion times.

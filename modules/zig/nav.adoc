@@ -1,0 +1,3 @@
+. xref:index.adoc[]
+* xref:collections.adoc[]
+* xref:pointers.adoc[]

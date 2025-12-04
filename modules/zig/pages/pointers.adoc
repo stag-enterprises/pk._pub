@@ -1,0 +1,81 @@
+= Pointers
+
+== Single-item
+
+"Normal" pointers that point to one thing.
+
+.Syntax
+Type::                `*Type`
+Make a pointer::      `&val`
+Dereference::         `ptr.*`
+To slice (of len 1):: `ptr[0..1]`
+Difference::          `ptr1 - ptr2`
+
+=== Arrays
+
+An array has the type syntax `[len]Type`,
+so a single-item pointer to an array,
+or an array pointer has type `*[len]Type`.
+They support a few convenience features so you don't have to deref every time.
+
+.Syntax
+Type::        `*[len]Type`
+Index::       `ptr[idx]`
+To slice::    `ptr[start..end]` or `ptr[start..]`
+Length::      `ptr.len`
+Subtraction:: `ptr1 - ptr2`
+To/from int:: `@ptrFromInt(int)`, `@intFromPtr(ptr)`
+
+== Many-item
+
+These are like normal pointers
+but semantically it points to the first element in a sequence, like in C.
+You cannot directly dereference a many-item pointer.
+The type syntax is very similar to that of <<collections.adoc#arrays, arrays>>.
+They do not store any length information.
+
+.Syntax
+Type::        `+[*]Type+` (the `+*+` is literal),
+              or with a sentinel value: `+[*:sentinel]Type+`
+Index::       `ptr[idx]`
+To slice::    `ptr[start..end]`
+Arithmetic::  `ptr + int` (or `ptr[int..]`), `ptr - int`
+Subtraction:: `ptr - ptr`
+
+== Slices
+
+These are fat pointers,
+which store the actual pointer (a <<many-item, many-item pointer>>),
+and the length of what it points to.
+They are similar to arrays,
+but the length of an array is known at comptime,
+while that of the slice is known at runtime.
+
+Slices can be downgraded to a many-item pointer using type coercion.
+Also, pointer arithmetic should not be used with slices.
+Instead, use a many-item pointer.
+
+[IMPORTANT]
+.Slice to array upgrading
+====
+If the length and slicing indexes are known at comptime,
+slices can get automatically upgraded to an array pointer.
+For example:
+[,zig]
+----
+const val: i32 = 1234;
+const ptr = &val;
+const slc = ptr[0..1]; // this is an array pointer!
+// @TypeOf(slc) == *[1]i32
+----
+====
+
+.Syntax
+Type::     `[]Type`, or with a sentinel value: `[:sentinel]Type`
+Index::    `slc[idx]`
+To slice:: `slc[start..end]`, or `slc[start..]`
+Length::   `slc.len`
+Pointer::  `slc.ptr` (mutable, but should not be mutated)
+
+Any "to slice" operation can have a sentinel value
+by using `val[start..end :sentinel]`.
