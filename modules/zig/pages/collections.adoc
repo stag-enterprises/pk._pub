@@ -65,12 +65,14 @@ Vectors are like arrays,
 but they let you run operations in parallel on them using SIMD.
 
 They can hold the following:
+
 * Booleans
 * Integers
 * Floats
 * Pointers
 
 They support these operations:
+
 * Arithmetic (including complex arithmetic like `@sqrt`)
 * Bitwise
 * Comparison
@@ -96,4 +98,5 @@ See also (bulitin functions):
   for using a builtin reducer operation
 * https://ziglang.org/documentation/master/#splat[`@splat`]
   for creeating a list of repeated elements
+
 
