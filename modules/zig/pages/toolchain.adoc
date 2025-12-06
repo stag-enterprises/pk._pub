@@ -1,0 +1,37 @@
+= Toolchain
+
+Zig has no official LSP server but https://github.com/zigtools/zls[ZLS],
+an unofficial community maintained server can be used.
+
+https://github.com/marler8997/anyzig[anyzig] is a tool which automatically
+installs and proxies calls to Zig.
+As of writing (2025-12-06) it does not work with the VSCode extension
+footnote:[tracking issue: https://github.com/marler8997/anyzig/issues/29].
+
+`zig-fmt` isn't the greatest formatter.
+One issue is that it doesn't have a sense of too long lines,
+so it will often generate extremely long, unreadable anonymous structs.
+The fix is to manually append a trailing comma
+which will force it into multiline mode.
+
+[,zig]
+----
+foo(.{
+  .bar = 5, .baz = 10,
+  .quux = false // no trailing comma
+});
+// becomes
+foo(.{ .bar = 5, .baz = 10, .quux = false });
+
+// fix
+foo(.{
+  .bar = 5, .baz = 10,
+  .quux = false, // trailing comma
+});
+// becomes
+foo(.{
+  .bar = 5,
+  .baz = 10,
+  .quux = false,
+});
+----
