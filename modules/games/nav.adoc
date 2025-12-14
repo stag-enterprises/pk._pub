@@ -1,0 +1,4 @@
+.Games
+* xref:factorio.adoc[]
+* xref:lewd.adoc[]
+* xref:rogue.adoc[]

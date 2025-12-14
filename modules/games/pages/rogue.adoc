@@ -1,0 +1,9 @@
+= Roguelikes, roguelites, and others
+
+Some of these probably aren't proper roguelik/tes, but that doesn't matter.
+
+* https://www.bay12games.com/dwarves[Dwarf Fortress]
+* https://cataclysmdda.org[Cataclysm: Dark Days Ahead]: Turn based.
+* https://www.unrealworld.fi[Unreal World]
+* https://www.adom.de/home/index.html[Ancient Domains of Mystery]
+* https://www.markrjohnsongames.com/games/ultima-ratio-regum[Ultima Ratio Regum]

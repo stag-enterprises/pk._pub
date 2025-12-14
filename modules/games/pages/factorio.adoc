@@ -1,0 +1,7 @@
+= Factorio
+
+== Longest belt weave with 4 belts
+
+[source]
+🟡🔴🔵🟢🟨🟨🟨🟨🟥🟥🟦🟦🟨🟨🟩🟩🟥🟥🟨🟨🟦🟦🟨🟨🟥🟥🟩🟩🟨🟨🟦🟦🟥🟥🟨🟨🟨🟨🟢🔵🔴🟡
+
