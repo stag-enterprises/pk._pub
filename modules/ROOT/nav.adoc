@@ -1,1 +1,3 @@
 * xref:index.adoc[]
+* 2025
+  - xref:2025/522.adoc[522: Quitting piano]
